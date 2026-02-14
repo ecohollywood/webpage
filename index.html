@@ -35,24 +35,16 @@
     <script>
         const searchTerms = ['eagle', 'elephant', 'emerald', 'evening', 'eclipse', 'egg', 'elf', 'engine', 'envelope', 'echo'];
         
-        async function loadImages() {
+        function loadImages() {
             const gallery = document.getElementById('gallery');
             
-            // Get random search term starting with E
-            const randomTerm = searchTerms[Math.floor(Math.random() * searchTerms.length)];
-            
-            try {
-                // Using Unsplash API (free, no key required for basic usage)
-                for (let i = 0; i < 8; i++) {
-                    const response = await fetch(`https://source.unsplash.com/600x400/?${randomTerm},landscape&sig=${Math.random()}`);
-                    const img = document.createElement('img');
-                    img.src = response.url;
-                    img.alt = randomTerm;
-                    gallery.appendChild(img);
-                }
-            } catch (error) {
-                console.error('Error loading images:', error);
-                gallery.innerHTML = '<p>Unable to load images at this time.</p>';
+            // Generate 8 random images using picsum.photos
+            for (let i = 0; i < 8; i++) {
+                const randomId = Math.floor(Math.random() * 1000) + 1;
+                const img = document.createElement('img');
+                img.src = `https://picsum.photos/600/400?random=${randomId}`;
+                img.alt = 'Random photo';
+                gallery.appendChild(img);
             }
         }
         
