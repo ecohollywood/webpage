@@ -13,6 +13,6 @@ jobs:
       uses: cloudflare/wrangler-action@v3
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        accountId: 5c548f906a7d4e02c8a4354ccce0078c
         command: pages deploy . --project-name=ecohollywood
         gitHubToken: ${{ secrets.GITHUB_TOKEN }}
